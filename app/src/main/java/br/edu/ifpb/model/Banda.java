@@ -1,26 +1,29 @@
 package br.edu.ifpb.model;
 
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Banda{
+@Entity
+public class Banda implements Serializable {
+    @Id
+    @GeneratedValue
     private int id;
     private String localDeOrigim;
     private String nomeFantansia;
-    private List<Integrante> integrantes;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "banda_id")
+    private List<Integrante> integrantes = new ArrayList<>();
 
     public Banda(){
     }
 
-    public Banda(int id, String localOrigim, String nomeFantansia){
-
-    }
-
-    public Banda(int id, String localDeOrigim, String nomeFantansia, List<Integrante> integrantes) {
+    public Banda(int id, String localDeOrigim, String nomeFantansia) {
         this.id = id;
         this.localDeOrigim = localDeOrigim;
         this.nomeFantansia = nomeFantansia;
-        this.integrantes = integrantes;
     }
 
     public int getId() {

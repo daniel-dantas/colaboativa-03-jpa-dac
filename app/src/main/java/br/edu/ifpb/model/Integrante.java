@@ -1,22 +1,28 @@
 package br.edu.ifpb.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Integrante {
+@Entity
+public class Integrante implements Serializable {
+    @Id
+    @GeneratedValue
     private int id;
     private String nome;
     private LocalDate dataDeNascimento;
-    private CPF cpf;
+    private String cpf;
 
     public Integrante(){
 
     }
 
-    public Integrante(int id, String nome, LocalDate dataDeNascimento, String cpf) {
+    public Integrante(int id, String nome, LocalDate dataDeNascimento) {
         this.id = id;
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
-        this.cpf = new CPF (cpf);
     }
 
     public int getId() {
@@ -39,15 +45,15 @@ public class Integrante {
         return dataDeNascimento;
     }
 
-    public void setDataDeNascimento(LocalDate dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
-    }
-
-    public CPF getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(CPF cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public void setDataDeNascimento(LocalDate dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
     }
 }
