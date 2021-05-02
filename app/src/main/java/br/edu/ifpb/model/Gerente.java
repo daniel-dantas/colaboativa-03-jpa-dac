@@ -1,13 +1,23 @@
 package br.edu.ifpb.model;
 
-public class Gerente {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import java.io.Serializable;
+
+@Entity
+public class Gerente implements Serializable {
+    @Id
+    @GeneratedValue
     private int id;
     private int nome;
+    @OneToOne
     private Banda banda;
     private String email;
-    private CPF cpf = new CPF("");
+    private String cpf;
 
-    public Gerente(int id, int nome, Banda banda, String email, CPF cpf) {
+    public Gerente(int id, int nome, Banda banda, String email, String cpf) {
         this.id = id;
         this.nome = nome;
         this.banda = banda;
@@ -50,11 +60,11 @@ public class Gerente {
         this.email = email;
     }
 
-    public CPF getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(CPF cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 }

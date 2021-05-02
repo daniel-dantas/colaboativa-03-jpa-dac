@@ -1,6 +1,5 @@
 package br.edu.ifpb.model;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
