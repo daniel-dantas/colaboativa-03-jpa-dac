@@ -1,6 +1,5 @@
 package br.edu.ifpb.controllers;
 
-import br.edu.ifpb.model.Banda;
 import br.edu.ifpb.model.Integrante;
 
 import javax.enterprise.context.SessionScoped;
@@ -11,31 +10,33 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Named
 @SessionScoped
-public class BandaController implements Serializable {
-    private Banda banda = new Banda();
+@Named
+public class IntegranteController implements Serializable {
+    private Integrante integrante = new Integrante();
 
     private EntityManager entityManager = Persistence
             .createEntityManagerFactory("atividadedac")
             .createEntityManager();
 
     public void criarIntegrante(){
+
         entityManager.getTransaction().begin();
-        entityManager.persist(banda);
+        entityManager.persist(integrante);
         entityManager.getTransaction().commit();
-        this.banda = new Banda();
+
+        this.integrante = new Integrante();
     }
 
-    public List<Banda> listarBandas(){
-        return new ArrayList<Banda>();
+    public List<Integrante> listarIntegrantes() {
+        return new ArrayList<Integrante>();
     }
 
-    public Banda getBanda() {
-        return banda;
+    public Integrante getIntegrante() {
+        return integrante;
     }
 
-    public void setBanda(Banda banda) {
-        this.banda = banda;
+    public void setIntegrante(Integrante integrante) {
+        this.integrante = integrante;
     }
 }
