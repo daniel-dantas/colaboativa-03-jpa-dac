@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:v="http://java.sun.com/jsf/core"
+                template="../template.xhtml"
+>
+   <ui:define name="corpo">
+      <h1>Novo integrante</h1>
+      <f:view>
+         <h:form>
+            <h:outputLabel for="datadenascimento" value="Data de Nascimento" />
+            <h:inputText value="#{integranteController.getIntegrante().dataDeNascimento}"
+                         id="datadenascimento"/>
+            <h:outputLabel for="cpf" value="CPF" />
+            <h:inputText value="#{integranteController.getIntegrante().cpf}"
+                         id="cpf"/>
+            <h:commandButton id="comando" styleClass="btn" value="adicionar" action="#{integranteController.criarIntegrante()}"/>
+         </h:form>
+      </f:view>
+   </ui:define>
+</ui:composition>
