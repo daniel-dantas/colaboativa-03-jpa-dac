@@ -2,6 +2,7 @@ package br.edu.ifpb.controllers;
 
 import br.edu.ifpb.model.Integrante;
 
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -13,7 +14,10 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @SessionScoped
@@ -49,6 +53,19 @@ public class IntegranteController implements Serializable {
         TypedQuery<Integrante> query = entityManager.createQuery(criteria);
 
         return query.getResultList();
+    }
+
+    public List<Integrante> filtrarIntegrantes() {
+        List<Integrante> result = new ArrayList<>();
+        List<Integrante> integrantes = this.listarIntegrantes();
+
+        for(Integrante inte : integrantes){
+            if(inte.getDataDeNascimento().isAfter(LocalDate.of(2000, 01, 01)) && inte.getDataDeNascimento().isBefore(LocalDate.of(2016, 04, 20))){
+                result.add(inte);
+            }
+        }
+
+        return result;
     }
 
     public List<Integrante> pesquisarPorCpf() {
