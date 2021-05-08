@@ -57,7 +57,7 @@ public class IntegranteController implements Serializable {
 
         for(Integrante inte : listaDeIntegrantes){
             if(inte.getCpf().equals(this.searchCpf)){
-                this.integrante = inte;
+                this.resultIntegrante = inte;
             }
         }
 
