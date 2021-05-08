@@ -40,7 +40,7 @@ public class BandaController implements Serializable {
         this.banda = new Banda();
     }
 
-    public List<Banda> listarLocalOrigens() {
+    public List<Banda> listarBandas() {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Banda> criteria = builder.createQuery(Banda.class);
         Root<Banda> root = criteria.from(Banda.class);
@@ -51,9 +51,9 @@ public class BandaController implements Serializable {
         return query.getResultList();
     }
 
-    public List<Banda> pesquisarPorLocalOrigem() {
+    public String pesquisarPorLocalOrigem() {
 
-        List<Banda> listaLocalOrigens = this.listarLocalOrigens();
+        List<Banda> listaLocalOrigens = this.listarBandas();
 
         for(Banda banda : listaLocalOrigens){
             if(banda.getLocalDeOrigim().equals(this.searchLocalOrigem)){
@@ -61,7 +61,7 @@ public class BandaController implements Serializable {
             }
         }
 
-        return listaLocalOrigens;
+        return "details.xhtml";
     }
 
     public String getSearchLocalOrigem() {

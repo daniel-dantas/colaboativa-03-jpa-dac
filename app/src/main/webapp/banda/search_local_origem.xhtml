@@ -7,13 +7,10 @@
    <ui:define name="corpo">
       <h1>Pesquisa por Local de Origem</h1>
       <h:form>
-         <h:outputLabel for="search_cpf" value="Seach CPF" />
+         <h:outputLabel for="search_local_origem" value="Seach CPF" />
          <h:inputText value="#{bandaController.searchLocalOrigem}"
-                      id="search_cpf"/>
+                      id="search_local_origem"/>
          <h:commandButton value="Pesquisar" action="#{bandaController.pesquisarPorLocalOrigem()}" class="btn"/>
-         <v:view>
-            <h:outputText rendered="#{bandaController.resultBanda != null}" value="#{bandaController.resultBanda}" />
-         </v:view>
       </h:form>
    </ui:define>
 </ui:composition>
