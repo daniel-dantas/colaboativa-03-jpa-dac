@@ -2,10 +2,12 @@ package br.edu.ifpb.controllers;
 
 import br.edu.ifpb.model.Integrante;
 
+import javax.ejb.Stateless;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -16,6 +18,7 @@ import java.util.List;
 
 @SessionScoped
 @Named
+@Stateless
 public class IntegranteController implements Serializable {
     private Integrante integrante = new Integrante();
 
@@ -23,6 +26,7 @@ public class IntegranteController implements Serializable {
 
     private String searchCpf = "";
 
+    @PersistenceContext(unitName="atividadedac")
     private EntityManager entityManager = Persistence
             .createEntityManagerFactory("atividadedac")
             .createEntityManager();
